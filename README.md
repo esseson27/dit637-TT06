@@ -28,3 +28,38 @@
 4. `npm install`
 5. `npx expo login`
 6. `npx expo start --tunnel` OR in the web `npx expo start --web`
+
+## Key Snippet:
+
+vectorizer = CountVectorizer()
+feature_matrix = vectorizer.fit_transform(movie_features)
+
+similarity_scores = cosine_similarity(
+    selected_movie_vector,
+    feature_matrix
+)
+
+top_indices = similarity_scores.argsort()[0][-3:][::-1]
+recommendations = [movies[i] for i in top_indices]
+
+## AI Prompt:
+
+I am a student completing a technical lab on TT06 Experiencing ML. I have implemented a movie recommendation engine using FastAPI and Scikit-learn.
+
+Based on this code snippet:
+
+vectorizer = CountVectorizer()
+feature_matrix = vectorizer.fit_transform(movie_features)
+
+similarity_scores = cosine_similarity(
+    selected_movie_vector,
+    feature_matrix
+)
+
+top_indices = similarity_scores.argsort()[0][-3:][::-1]
+recommendations = [movies[i] for i in top_indices]
+
+
+## Summary:
+
+The FastAPI recommendation service uses Scikit-learn to convert movie features such as genres and cast into numerical vectors and applies cosine similarity to identify movies with related characteristics. Separating this machine learning logic from the Express.js search service creates a modular microservices architecture that allows the recommendation component to be maintained and scaled independently. This design contributes to a Smart and Secure System by providing intelligent, data-driven recommendations while keeping application responsibilities separated and reducing unnecessary coupling between services.
